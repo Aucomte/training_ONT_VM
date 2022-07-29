@@ -102,7 +102,12 @@ RUN conda install spades -n spades
 RUN conda clean --all --yes
 
 
-ENV PATH="${PATH}:/opt/conda/envs/:/opt/conda/envs/assembly-stats/bin:/opt/conda/envs/blobtools/bin:/opt/conda/envs/flye/bin:/opt/conda/envs/kraken2/bin:/opt/conda/envs/mummer/bin:/opt/conda/envs/nanoplot/bin:/opt/conda/envs/quast/bin:/opt/conda/envs/ragtag/bin:/opt/conda/envs/sourmash/bin:/opt/conda/envs/blast/bin:/opt/conda/envs/diamond/bin:/opt/conda/envs/kaiju/bin:/opt/conda/envs/krona/bin:/opt/conda/envs/nanocomp/bin:/opt/conda/envs/porechop/bin:/opt/conda/envs/racon/bin:/opt/conda/envs/raven-assembler/bin:/opt/conda/envs/spades/bin"
+RUN conda create -n checkv --no-default-packages
+RUN conda install checkv -n checkv
+RUN conda clean --all --yes
+
+
+ENV PATH="${PATH}:/opt/conda/envs/:/opt/conda/envs/assembly-stats/bin:/opt/conda/envs/blobtools/bin:/opt/conda/envs/flye/bin:/opt/conda/envs/kraken2/bin:/opt/conda/envs/mummer/bin:/opt/conda/envs/nanoplot/bin:/opt/conda/envs/quast/bin:/opt/conda/envs/ragtag/bin:/opt/conda/envs/sourmash/bin:/opt/conda/envs/blast/bin:/opt/conda/envs/diamond/bin:/opt/conda/envs/kaiju/bin:/opt/conda/envs/krona/bin:/opt/conda/envs/nanocomp/bin:/opt/conda/envs/porechop/bin:/opt/conda/envs/racon/bin:/opt/conda/envs/raven-assembler/bin:/opt/conda/envs/spades/bin:/opt/conda/envs/checkv/bin"
 
 #Dedicated install to ONT analyses, unpacked
 RUN mkdir -p /opt/
