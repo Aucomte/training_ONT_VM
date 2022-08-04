@@ -4,7 +4,7 @@ FROM jupyter/datascience-notebook
 USER root
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -y
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apt-utils python3-pyqt5 pyqt5-dev-tools qttools5-dev-tools gnupg2
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apt-utils python3-pyqt5 pyqt5-dev-tools qttools5-dev-tools gnupg2 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y unzip wget build-essential cmake git-all tar gzip
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y minimap2 seqtk samtools bedtools vcftools bcftools assemblytics bandage
 
@@ -22,6 +22,8 @@ RUN python3 -m pip install PyQt5 ete3 owlready2 pyproteinsExt ipympl jupyterlab
 RUN python3 -m pip install --upgrade ipython
 RUN python3 -m pip install bash_kernel
 RUN python3 -m bash_kernel.install
+
+#RUN python3 -m pip install medaka
 
 RUN conda update --all --yes
 
@@ -101,13 +103,17 @@ RUN conda create -n spades --no-default-packages
 RUN conda install spades -n spades
 RUN conda clean --all --yes
 
-
 RUN conda create -n checkv --no-default-packages
 RUN conda install checkv -n checkv
 RUN conda clean --all --yes
 
 
-ENV PATH="${PATH}:/opt/conda/envs/:/opt/conda/envs/assembly-stats/bin:/opt/conda/envs/blobtools/bin:/opt/conda/envs/flye/bin:/opt/conda/envs/kraken2/bin:/opt/conda/envs/mummer/bin:/opt/conda/envs/nanoplot/bin:/opt/conda/envs/quast/bin:/opt/conda/envs/ragtag/bin:/opt/conda/envs/sourmash/bin:/opt/conda/envs/blast/bin:/opt/conda/envs/diamond/bin:/opt/conda/envs/kaiju/bin:/opt/conda/envs/krona/bin:/opt/conda/envs/nanocomp/bin:/opt/conda/envs/porechop/bin:/opt/conda/envs/racon/bin:/opt/conda/envs/raven-assembler/bin:/opt/conda/envs/spades/bin:/opt/conda/envs/checkv/bin"
+RUN conda create -n medaka --no-default-packages
+RUN conda install medaka -n medaka
+RUN conda clean --all --yes
+
+
+ENV PATH="${PATH}:/opt/conda/envs/:/opt/conda/envs/assembly-stats/bin:/opt/conda/envs/blobtools/bin:/opt/conda/envs/flye/bin:/opt/conda/envs/kraken2/bin:/opt/conda/envs/mummer/bin:/opt/conda/envs/nanoplot/bin:/opt/conda/envs/quast/bin:/opt/conda/envs/ragtag/bin:/opt/conda/envs/sourmash/bin:/opt/conda/envs/blast/bin:/opt/conda/envs/diamond/bin:/opt/conda/envs/kaiju/bin:/opt/conda/envs/krona/bin:/opt/conda/envs/nanocomp/bin:/opt/conda/envs/porechop/bin:/opt/conda/envs/racon/bin:/opt/conda/envs/raven-assembler/bin:/opt/conda/envs/spades/bin:/opt/conda/envs/checkv/bin:/opt/conda/envs/medaka/bin"
 
 #Dedicated install to ONT analyses, unpacked
 RUN mkdir -p /opt/
