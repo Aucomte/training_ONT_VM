@@ -23,7 +23,7 @@ RUN python3 -m pip install --upgrade ipython
 RUN python3 -m pip install bash_kernel
 RUN python3 -m bash_kernel.install
 
-#RUN python3 -m pip install medaka
+# RUN python3 -m pip install medaka
 
 RUN conda update --all --yes
 
