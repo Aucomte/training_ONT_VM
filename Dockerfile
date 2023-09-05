@@ -1,6 +1,6 @@
 # An example of extension of the jupyter stack 'datascience-notebook'
 # with pip modules ('pip install ...') and their system dependancies ('apt-get install -y ...')
-FROM jupyter/datascience-notebook:a374cab4fcb6
+FROM jupyter/datascience-notebook
 USER root
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -y
